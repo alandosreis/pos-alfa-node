@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var users = require('./routes/pokemons');
 var app = express();
 
 // view engine setup
@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/pokemons', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,4 +58,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+module.exports = app; // objeto modulo pra excutar em www      de configura~cao do seervidor

@@ -30,6 +30,8 @@ http.createServer(function(request, response) {
     case '/criar':
       PokemonModel.create({ name: 'TESTE' }, (err, data) => {
         if (err) return console.log('ERRO: ', err);
+
+
         response.end(JSON.stringify(data))
       });
       break;
@@ -63,3 +65,6 @@ http.createServer(function(request, response) {
   // response.end('Fechando')
 }).listen(3000)
 console.log('Server running at http://localhost:3000/');
+
+
+//postman launcher
