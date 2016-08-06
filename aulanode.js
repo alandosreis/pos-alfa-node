@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const _schema = {
   name:  String,
-  atack: Number,
+  atack: Number, 
   defense: Number
 }
 const pokemonSchema = new Schema(_schema);
