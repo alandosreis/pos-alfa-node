@@ -1,38 +1,61 @@
-const assert = require('assert')
-const banco = require('./../../../db/config_test')
-const controller = require('./../_controller')
-describe('Pokemon module', () => {
+require('./../../../db/config.test')
+
+const assert = require('assert');
+const Controller = require('./../controller')
+
+
+describe('Pokemon Controller', () => {
+    
     before((done) => {
-        let callback = (err, data) => {
-            done()
-        }
-        controller.delete({}, callback)
+        Controller.remove({}, (err, data) => done())
     })
-    describe('Quando iniciamos sem pokemon, a lista deve vir vazia', () => {
-        it('deve retornar um array VAZIO, sem nada de pokemons', (done) => {
-            let query = {}
-            let callback = (err, data) => {
-                assert.equal([], data, 'lista veio vazia')
-            }
-            controller.find(query, callback)
-            done()
-        })
-    })
-    describe('quando cadastrarmos um novo pokemon, o retorno deve ser o mesmo objeto com o seu _id', () => {
-        it('o objeto retornado deve ser igual ao que foi adicionado, mas com o _id', (done) => {
-            let mod = {
-                name: 'alexmon',
-                attack: 9001,
-                defense: 1000
-            }
-            let callback = (err, data) => {
-                assert.ok(data._id, 'Objeto não veio correto')
-                assert.equal(mod.attack, data.attack)
-                assert.equal(mod.defense, data.defense)
-                assert.equal(mod.name, data.name)
+
+    var msg1 = 'Quando iniciamos sem pokemons a lista deve vir vazia'
+    describe(msg1,()=>{
+        it('Deve retornar um array vazio', (done) =>{
+            var query = {}
+            var callback = (err,data) =>{
+                console.log('data',data)
+                assert.equal(null, err, 'Erro não é nulo')
+                
+                assert.equal(0, data.length, 'Lista não veio vazia')
                 done()
             }
-            controller.create(mod, callback)
+            Controller.find(query, callback)
         })
     })
+
+    describe('CREATE',()=>{
+        it('No CREATE o retorno deve ser o mesmo objeto enviado, adicionado _id', (done) =>{
+            var mod = {
+                name:'TESTE',
+                attack: 9001,
+                defebse:8001
+            }
+            var callback = (err,data) =>{
+                //console.log('data._id',typeof data._id)
+                assert.equal('object', typeof data._id)
+                done()
+            }
+            Controller.create(mod, callback)
+        })
+    })
+
+    describe('UPDATE',()=>{
+        it('No UPDATE o retorno deve ser o mesmo objeto enviado, adicionado _id', (done) =>{
+            var mod = {
+                name:'TESTEsSS',
+                attack: 90013,
+                defebse:80013
+            }
+            var callback = (err,data) =>{
+                //console.log('data._id',typeof data._id)
+                assert.equal(1, data.ok)
+                done()
+            }
+            Controller.update(mod, callback)
+        })
+
+    })
+
 })
