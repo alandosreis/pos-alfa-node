@@ -1,6 +1,7 @@
 let PokemonModel = require('./model') //remover esta linha depois
 let CONTROLLER = require('./_controller')
 
+
 let CRUD = {
     create: (req, res) => {
         let mod = req.body

@@ -6,6 +6,11 @@ const CONTROLLER = {
     create: (data, callback) => {
         const model = new Model(data)
         model.save(callback)
+        let cd = (err, res) =>{
+            if(err) thwor new error(err)
+                res.json(data)
+            }
+            
     },
     find: (query, callback) => {
         Model.find(query, callback)
