@@ -1,11 +1,14 @@
 {
-  "name": "packaqe.json",
+  "name": "aula-mongoose",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "aula do professor jean na pos",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Tiago Amado Durante",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.5.8"
+  }
 }

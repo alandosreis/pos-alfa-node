@@ -9,12 +9,19 @@ const _schema = {
 const pokemonSchema = new Schema(_schema)
 const PokemonModel = mongoose.model('Pokemon', pokemonSchema)
 
-const query = {name:/suissamon/i}
-const mod = {attack:9001}
-const options = {multi:true}
+const query = {
+    name: /suissamon/i
+}
+const mod = {
+    attack: 9001
+}
+const options = {
+    multi: true
+}
 
-PokemonModel.update(query, mod, (err, data) => {
-  if (err) return console.log('ERRO: ', err)
-  return console.log('Buscou:', data)
+PokemonModel.remove(query, (err, data) => {
+    if (err) return console.log('ERRO: ', err)
+    return console.log('Buscou:', data)
 })
+
 module.exports = PokemonModel

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost/pos-alfa';
+const dbURI = 'mongodb://localhost/pos-alfa-testes';
 
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function() {
